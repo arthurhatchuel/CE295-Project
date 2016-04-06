@@ -8,21 +8,16 @@ function [cost] = MonthlyCost(Q,L,C,month,c_sumpeak,c_sumpartpeak,c_sum, c_winpa
 % Q is the charge load of the battery
 % c_sumpeak is the price of max power for the summer during peak hour
 % c_sumpartpeak is the price of max power for the summer during partpeak hour
-% c_sumoffpeak is the price of max power for the summer during offpeak-hour
+% c_sum is the price of max power for the summer
 % c_winpartpeak is the price of max power for the winter during partpeak-hour
-% c_winoffpeak is the price of max power for the winter during offpeak-hour
+% c_win is the price of max power for the winter
 % (no peak period during the winter)
 
 L_tot=L+Q;
 summermonths = 5:10;
 wintermonths = [1:4,11:12];
-%day1=datenum(datetime(2014,month,1))-datenum('31-December-2013');
-%dayend=datenum(datetime(2014,month+1,0))-datenum('31-December-2013');
-%monthhours=((day1-1)*24+1:dayend*24)'; %hours of the month
 if ~isempty(find(month == summermonths,1))  %summer month
     %find peak hours
-    %peakhours=intersect(find(Cost==0.14726),monthhours);
-    %peakhours=peakhours-24*(day1-1); %begin month hours to 1
     peakhours=C==0.14726;
     %find part peak hours
     partpeakhours=C==0.10714;
