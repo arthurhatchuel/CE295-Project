@@ -4,6 +4,12 @@ function [cost] = DailyCost2(Q,L,C,month,c_sumpeak,c_sumpartpeak,c_sum, c_winpar
 % L is the load vector (24x1)
 % C is the kWh tariffs vector (24x1)
 % Q is the charge load of the battery
+% c_sumpeak is the price of max power for the summer during peak hour
+% c_sumpartpeak is the price of max power for the summer during partpeak hour
+% c_sum is the price of max power for the summer
+% c_winpartpeak is the price of max power for the winter during partpeak-hour
+% c_win is the price of max power for the winter
+% (no peak period during the winter)
 
 L_tot=L+Q;
 summermonths = 5:10;
